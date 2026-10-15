@@ -1,0 +1,85 @@
+{
+  "heading": {
+    "bottom": -4203.00032043457,
+    "height": 154.0416717529297,
+    "left": 15.135416984558104,
+    "right": 349.80210399627686,
+    "top": -4357.0419921875,
+    "width": 334.66668701171875,
+    "x": 15.135416984558104,
+    "y": -4357.0419921875
+  },
+  "hero": {
+    "bottom": -4114,
+    "height": 844,
+    "left": 0,
+    "right": 374.6666870117187,
+    "top": -4958,
+    "width": 374.6666870117187,
+    "x": 0,
+    "y": -4958
+  },
+  "sections": [
+    {
+      "class": "hero",
+      "height": 844,
+      "id": "home"
+    },
+    {
+      "class": "about section-pad",
+      "height": 518.3333740234375,
+      "id": "about"
+    },
+    {
+      "class": "service-overview section-pad",
+      "height": 1231.479248046875,
+      "id": ""
+    },
+    {
+      "class": "services section-pad",
+      "height": 3088.58349609375,
+      "id": "services"
+    },
+    {
+      "class": "experience section-pad",
+      "height": 459.09375,
+      "id": ""
+    },
+    {
+      "class": "story",
+      "height": 630,
+      "id": ""
+    },
+    {
+      "class": "gallery section-pad",
+      "height": 1309.8021240234375,
+      "id": "gallery"
+    },
+    {
+      "class": "team section-pad",
+      "height": 1595.7083740234375,
+      "id": ""
+    },
+    {
+      "class": "booking",
+      "height": 1319.8958740234375,
+      "id": "appointment"
+    },
+    {
+      "class": "contact section-pad",
+      "height": 949.1771240234376,
+      "id": "contact"
+    }
+  ],
+  "story": {
+    "bottom": 1813.4896240234375,
+    "height": 630,
+    "left": 0,
+    "right": 374.6666870117187,
+    "top": 1183.4896240234375,
+    "width": 374.6666870117187,
+    "x": 0,
+    "y": 1183.4896240234375
+  },
+  "width": 390
+}

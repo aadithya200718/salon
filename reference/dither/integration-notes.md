@@ -1,0 +1,15 @@
+# Canvas2D integration
+
+Electric Gaze and Ink Garden use the exact supplied WEBP source paths in `public/ascii-editor/demos/generated/`. Runtime JSON files in `lib/dither/presets/` are verbatim copies of the authoritative original JSON files alongside this note. The source mapping lives separately in `lib/dither/types.ts`; no source fields were added to the presets.
+
+This is a new, local Canvas2D implementation. No 21st.dev renderer source or runtime dependency was used. The original hero and existing editorial story are the only integration points. Their dimensions, typography, overlays, links, entrance animation, branding, forms and gallery remain in place. The source artwork is also the fallback if canvas, image loading or JavaScript fails.
+
+The pipeline decodes each image through a shared promise cache, applies cover cropping with the existing responsive focal positions, samples average RGB in 9 CSS pixel cells, applies saturation/grayscale, contrast, brightness and the piecewise linear tone curve, and writes a 4×4 Bayer micro-pattern per cell. A transparent output buffer preserves source colors and uses luminance and density to control mark occupancy; coverage selects processed cells. This is a reconstruction from the given settings, not a claim of pixel-for-pixel equivalence to a proprietary editor renderer.
+
+Animation uses the supplied enabled speed (100) and intensity (60) controls. Shimmer changes the small patterns locally; pulse changes them uniformly on a six-second breathing cycle. Pattern modulation is bounded to 2.7 percentage points. The renderer reuses sampled grids and ImageData and does not decode, read source pixels, or update React state per frame. Animation is capped at 24 paints per second. DPR is capped at 1.5, and backing/source areas are capped at 2.5 million pixels. The 9 pixel output grid is independent of DPR.
+
+Ink Garden activation is deferred until within 350 pixels of the viewport; its native source image is lazy loaded. Both animations pause outside the viewport and when the document is hidden. Reduced motion, Save-Data, 2GB device memory or two or fewer logical CPUs render static dither instead. Media preference changes are handled live. RAFs, resize work, observers and event listeners are cleaned up on unmount.
+
+All remaining supplied fields are preserved exactly. Tint opacity is zero, so the named blue tint has no visual effect. No blur, post-effects, lights or mask is enabled. In particular, Ink Garden's `mask.showOverlay: true` does not activate its disabled mask. Unsupported future enabled effects are explicitly rejected into the exact-source fallback rather than silently approximated. The current implementation intentionally supports these supplied dither presets; additional editor render modes and enabled effect families require dedicated implementations.
+
+Run the pure renderer/configuration checks with `node --test tests/dither.test.mjs`, then `npm run typecheck` and `npm run build`. Browser interaction, lifecycle and screenshot review are performed separately by the main agent.
